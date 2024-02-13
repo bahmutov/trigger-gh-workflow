@@ -1,0 +1,11 @@
+name: Example workflow
+on:
+  # workflow that can be triggered for testing
+  repository_dispatch:
+    types: [trigger-me]
+jobs:
+  example:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Print inputs arguments
+        run: echo ${{ toJson(github.event.client_payload) }}

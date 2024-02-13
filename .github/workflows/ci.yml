@@ -21,6 +21,15 @@ jobs:
 
       - run: npm run build
 
+      - name: Trigger example workflow
+        uses: bahmutov/trigger-gh-workflow@HEAD
+        env:
+          DEBUG: trigger-gh-workflow
+        with:
+          organization: bahmutov
+          repository: trigger-gh-workflow
+          event-type: trigger-me
+
       # https://github.com/cycjimmy/semantic-release-action
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4

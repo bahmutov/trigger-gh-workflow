@@ -1,0 +1,27 @@
+name: 'Trigger GH Workflow'
+description: 'Reusable GH action to trigger a GitHub workflow via dispatch event'
+author: 'Gleb Bahmutov'
+inputs:
+  organization:
+    description: 'The organization name'
+    type: 'string'
+    required: true
+  repository:
+    description: 'The repository name'
+    type: 'string'
+    required: true
+  event-type:
+    description: 'The event type'
+    type: 'string'
+    required: true
+  payload:
+    description: 'The payload as JSON string'
+    type: 'string'
+    required: false
+    default: '{}'
+runs:
+  using: 'node18'
+  main: 'dist/index.js'
+branding:
+  color: 'yellow'
+  icon: 'check-square'

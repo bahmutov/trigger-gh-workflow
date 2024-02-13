@@ -26,13 +26,13 @@ if (!process.env.GH_TOKEN) {
 }
 
 const payload = core.getInput('payload', { required: true })
-debug('parsing client payload JSON')
-const clientPayload = JSON.parse(payload)
-const body = {
+debug('parsing client JSON payload after removing newlines')
+const clientPayload = JSON.parse(payload.replace(/\n/g, ''))
+const body = JSON.stringify({
   event_type: eventType,
   client_payload: clientPayload,
-}
-debug('body:', body)
+})
+debug('body: %s', body)
 
 const options = {
   method: 'POST',
@@ -41,7 +41,7 @@ const options = {
     Authorization: `Bearer ${process.env.GH_TOKEN}`,
     'X-GitHub-Api-Version': '2022-11-28',
   },
-  body: JSON.stringify(body),
+  body,
 }
 
 fetch(url, options)

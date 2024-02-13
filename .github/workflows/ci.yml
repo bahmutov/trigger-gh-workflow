@@ -24,6 +24,7 @@ jobs:
       - name: Trigger example workflow
         uses: bahmutov/trigger-gh-workflow@HEAD
         env:
+          GITHUB_TOKEN: ${{ secrets.GH_TRIGGER_TOKEN }}
           DEBUG: trigger-gh-workflow
         with:
           organization: bahmutov

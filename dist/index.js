@@ -4045,8 +4045,13 @@ const options = {
 }
 
 fetch(url, options)
-  .then((response) => response.json())
-  .then((data) => console.log(data))
+  // there is no response data for this endpoint
+  // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-dispatch-event
+  .then((response) => {
+    if (response.status !== 204) {
+      throw new Error(`Failed to trigger workflow ${eventType} ${url}`)
+    }
+  })
   .catch((error) => {
     console.error('Error:', error)
     process.exit(1)

@@ -45,6 +45,7 @@ const options = {
   body,
 }
 
+console.log('Triggering workflow %s for %s/%s', eventType, org, repo)
 fetch(url, options)
   // there is no response data for this endpoint
   // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-dispatch-event
@@ -52,6 +53,7 @@ fetch(url, options)
     if (response.status !== 204) {
       throw new Error(`Failed to trigger workflow ${eventType} ${url}`)
     }
+    console.log('Workflow type %s triggered successfully', eventType)
   })
   .catch((error) => {
     console.error('Error:', error)

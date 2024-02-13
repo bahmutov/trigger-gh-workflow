@@ -30,6 +30,10 @@ jobs:
           organization: bahmutov
           repository: trigger-gh-workflow
           event-type: trigger-me
+          payload: |
+            {
+              "message": "hello from the release workflow"
+            }
 
       # https://github.com/cycjimmy/semantic-release-action
       - name: Semantic Release

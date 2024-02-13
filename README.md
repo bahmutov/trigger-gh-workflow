@@ -6,6 +6,24 @@
 
 See [action.yml](./action.yml)
 
+## Example
+
+```yml
+- name: Trigger example workflow
+  uses: bahmutov/trigger-gh-workflow@v1
+  env:
+    GITHUB_TOKEN: ${{ secrets.GH_TRIGGER_TOKEN }}
+    DEBUG: trigger-gh-workflow
+  with:
+    organization: bahmutov
+    repository: trigger-gh-workflow
+    event-type: trigger-me
+    payload: |
+      {
+        "message": "hello from the release workflow"
+      }
+```
+
 ## Debugging
 
 Run this action with the environment variable `DEBUG=trigger-gh-workflow`

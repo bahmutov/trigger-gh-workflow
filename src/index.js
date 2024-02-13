@@ -21,8 +21,9 @@ if (!eventType) {
   throw new Error('Event type is required')
 }
 
-if (!process.env.GH_TOKEN) {
-  throw new Error('GH_TOKEN is required')
+const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN
+if (!token) {
+  throw new Error('GH_TOKEN or GITHUB_TOKEN is required')
 }
 
 const payload = core.getInput('payload', { required: true })
@@ -38,7 +39,7 @@ const options = {
   method: 'POST',
   headers: {
     Accept: 'application/vnd.github+json',
-    Authorization: `Bearer ${process.env.GH_TOKEN}`,
+    Authorization: `Bearer ${token}`,
     'X-GitHub-Api-Version': '2022-11-28',
   },
   body,

@@ -1,4 +1,4 @@
-# trigger-gh-workflow ![@actions/core version](https://img.shields.io/badge/@actions/core-1.10.0-brightgreen)
+# trigger-gh-workflow ![@actions/core version](https://img.shields.io/badge/@actions/core-1.10.1-brightgreen)
 
 > Reusable GH action to trigger a GitHub workflow via dispatch event
 
